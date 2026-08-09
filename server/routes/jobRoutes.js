@@ -1,0 +1,27 @@
+import express from "express";
+import {
+  getJobs,
+  getJobById,
+  createJob,
+  updateJob,
+  deleteJob,
+  getMyJobs,
+  getFilterMeta,
+} from "../controllers/jobController.js";
+import { protect, authorize } from "../middleware/auth.js";
+
+const router = express.Router();
+
+// Public
+router.get("/", getJobs);
+router.get("/meta/filters", getFilterMeta);
+
+// Employer - specific routes before the generic /:id route
+router.get("/employer/mine", protect, authorize("employer", "admin"), getMyJobs);
+
+router.get("/:id", getJobById);
+router.post("/", protect, authorize("employer", "admin"), createJob);
+router.put("/:id", protect, authorize("employer", "admin"), updateJob);
+router.delete("/:id", protect, authorize("employer", "admin"), deleteJob);
+
+export default router;

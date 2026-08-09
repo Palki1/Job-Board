@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-navy-900;
+  }
+  :focus-visible {
+    outline: 2px solid #14b8a6;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-navy-700 text-white hover:bg-navy-800 shadow-sm;
+  }
+  .btn-accent {
+    @apply btn bg-teal-500 text-white hover:bg-teal-600 shadow-sm;
+  }
+  .btn-outline {
+    @apply btn border border-navy-100 text-navy-700 hover:bg-navy-50;
+  }
+  .btn-ghost {
+    @apply btn text-navy-700 hover:bg-navy-50;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-navy-50;
+  }
+  .input {
+    @apply w-full rounded-lg border border-navy-100 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-muted focus:border-teal-500 focus:ring-1 focus:ring-teal-500 outline-none transition;
+  }
+  .label {
+    @apply block text-sm font-medium text-navy-800 mb-1.5;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+  .container-page {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Marquee animation used on the homepage hero (signature element) */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
