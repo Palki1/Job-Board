@@ -165,7 +165,7 @@ const EmployerDashboard = () => {
                   Applied for <span className="font-medium text-navy-800">{app.job?.title}</span> · {app.email}
                 </div>
                 <a
-                  href={`${import.meta.env.VITE_API_URL?.replace("/api", "") || "http://localhost:5000"}${app.resumeUrl}`}
+                  href={`${import.meta.env.VITE_API_URL?.replace("/api", "") || ""}${app.resumeUrl}`}
                   target="_blank"
                   rel="noreferrer"
                   className="text-teal-600 text-sm font-medium mt-1 inline-block"
